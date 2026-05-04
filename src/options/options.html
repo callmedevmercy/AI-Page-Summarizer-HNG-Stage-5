@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lumina Summarizer - Options</title>
+  <link rel="stylesheet" href="options.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="url(#paint0_linear)"/>
+          <path d="M2 17L12 22L22 17M2 12L12 17L22 12" stroke="url(#paint1_linear)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="paint0_linear" x1="12" y1="2" x2="12" y2="12" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#8B5CF6"/>
+              <stop offset="1" stop-color="#3B82F6"/>
+            </linearGradient>
+            <linearGradient id="paint1_linear" x1="12" y1="12" x2="12" y2="22" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#8B5CF6"/>
+              <stop offset="1" stop-color="#3B82F6"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <h1>Lumina</h1>
+      </div>
+      <p>Configure your AI provider and API keys securely.</p>
+    </header>
+
+    <main>
+      <div class="card">
+        <form id="settings-form">
+          
+          <div class="form-group">
+            <label for="provider">AI Provider</label>
+            <div class="select-wrapper">
+              <select id="provider" name="provider">
+                <option value="gemini">Google Gemini</option>
+                <option value="openai">OpenAI (GPT)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="apiKey">API Key</label>
+            <input type="password" id="apiKey" name="apiKey" placeholder="Enter your API key..." required autocomplete="off">
+            <p class="help-text">Your key is stored securely in your browser's local storage and never sent to our servers.</p>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn primary">Save Settings</button>
+          </div>
+          
+        </form>
+
+        <div id="status-message" class="status hidden"></div>
+      </div>
+    </main>
+  </div>
+  <script type="module" src="options.js"></script>
+</body>
+</html>
