@@ -41,9 +41,14 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   async function handleSummarize() {
+    elements.summarizeBtn.disabled = true;
     switchState('loading');
     
     try {
+      // Handle "Empty Page" / Chrome internal pages
+      if (!tab.url || tab.url.startsWith('chrome://') || tab.url.startsWith('chrome-extension://')) {
+        throw new Error("Cannot summarize empty page");
+      }
       // 1. Inject content script if not already injected (MV3 scripting API)
       await chrome.scripting.executeScript({
         target: { tabId: tab.id },
@@ -86,6 +91,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
       elements.errorMsg.textContent = error.message || "An unexpected error occurred.";
       switchState('error');
+    } finally {
+      elements.summarizeBtn.disabled = false;
     }
   }
 
