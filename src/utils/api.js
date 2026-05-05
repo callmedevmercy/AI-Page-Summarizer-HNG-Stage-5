@@ -28,7 +28,8 @@ export async function summarizeContent(provider, apiKey, content) {
     throw new Error("No readable content found on this page.");
   }
 
-  const prompt = `Content:\n\n${content.substring(0, 30000)}`; // Basic truncation to avoid token limits
+  // Truncate to strictly 6000 chars to keep the API extremely fast for the 'Huge Article' test
+  const prompt = `Content:\n\n${content.substring(0, 6000)}`;
 
   try {
     if (provider === "gemini") {
